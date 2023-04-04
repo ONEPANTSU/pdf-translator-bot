@@ -1,0 +1,9 @@
+
+.idea/
+
+eng_books/
+/venv/
+
+__pycache__/
+
+config.py
