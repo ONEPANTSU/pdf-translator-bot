@@ -16,8 +16,9 @@ async def file_handler(message: types.Document):
     sent_message = await message.reply(
         text="_Идёт перевод файла..._🧐", parse_mode="Markdown"
     )
-    original_path = "saved/{}.pdf".format(message.from_id)
-    translated_path = "to_send/{}.pdf".format(message.from_id)
+    file_name = str(message.document.file_name)[:-4] + "_" + str(message.from_id) + ".pdf"
+    original_path = "saved/{}".format(file_name)
+    translated_path = "to_send/{}".format(file_name)
     await message.document.download(destination_file=original_path)
     translate_pdf(
         original_path=original_path,
