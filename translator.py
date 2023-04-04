@@ -47,7 +47,7 @@ def translate_pdf(original_path, translated_path, font_size=12, max_line_length=
                     new_translated = (
                         new_translated[: char_index + bias]
                         + "\n"
-                        + new_translated[char_index + bias :]
+                        + new_translated[char_index + bias:]
                     )
                     bias += 1
                     line_len = 0
@@ -74,10 +74,13 @@ def translate_pdf(original_path, translated_path, font_size=12, max_line_length=
             pno += 1
         new_pdf.save(translated_path)
 
+
 def get_documentc_count(original_path):
     file_size = os.path.getsize(original_path)
     documents_count = math.ceil(file_size / 50000000)
     return documents_count
+
+
 def split(original_path, documents_count, font_size=12):
     file_names = []
     pdf = fitz.open(original_path)
